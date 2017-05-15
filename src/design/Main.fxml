@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="design.MainController">
+   <children>
+      <ScrollPane layoutX="48.0" layoutY="48.0" prefHeight="380.0" prefWidth="526.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0">
+         <content>
+            <Pane fx:id="field" minHeight="0.0" minWidth="0.0" onMouseReleased="#click" prefHeight="3072.0" prefWidth="4096.0" style="-fx-background-color: #33558c#33558c;">
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor></Pane>
+         </content>
+      </ScrollPane>
+      <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#okey" prefHeight="61.0" prefWidth="47.0" style="-fx-background-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/okey.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Отримати результат" />
+         </tooltip>
+      </Button>
+      <Button fx:id="btnFire" layoutX="10.0" layoutY="157.0" mnemonicParsing="false" onAction="#fire" prefHeight="61.0" prefWidth="47.0" style="-fx-background-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/fire.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Пожежа" />
+         </tooltip>
+      </Button>
+      <Button layoutX="5.0" layoutY="218.0" mnemonicParsing="false" onAction="#firestation" prefHeight="61.0" prefWidth="49.0" style="-fx-background-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/fireengine.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <tooltip>
+            <Tooltip text="Станція" />
+         </tooltip>
+      </Button>
+      <Button layoutX="12.0" layoutY="277.0" mnemonicParsing="false" onAction="#line" prefHeight="48.0" prefWidth="51.0" style="-fx-background-color: #FFFFFF;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/path.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="Дорога" />
+         </tooltip>
+      </Button>
+      <Button layoutX="13.0" layoutY="325.0" mnemonicParsing="false" onAction="#cancelFunc" prefHeight="48.0" prefWidth="50.0" style="-fx-background-color: #FFFFFF;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/cursor.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="Вказівник" />
+         </tooltip>
+      </Button>
+      <Button layoutX="14.0" layoutY="373.0" mnemonicParsing="false" onAction="#cancel" prefHeight="48.0" prefWidth="45.0" style="-fx-background-color: #FFFFFF;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Text layoutX="188.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I: " visible="false" />
+      <Text fx:id="lInfo" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Необхідні машини типу:" visible="false" />
+      <TextField fx:id="textI" layoutX="201.0" layoutY="9.0" prefHeight="26.0" prefWidth="57.0" visible="false" />
+      <Text layoutX="265.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="II: " visible="false" />
+      <TextField fx:id="textII" layoutX="280.0" layoutY="9.0" prefHeight="26.0" prefWidth="57.0" visible="false" />
+      <Text layoutX="344.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="III: " visible="false" />
+      <TextField fx:id="textIII" layoutX="364.0" layoutY="9.0" pickOnBounds="false" prefHeight="26.0" prefWidth="57.0" visible="false" />
+      <ImageView fx:id="btnSave" fitHeight="36.0" fitWidth="33.0" layoutX="433.0" layoutY="6.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../image/save.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label fx:id="lN" layoutX="21.0" layoutY="48.0" text="№:" visible="false" />
+      <TextField fx:id="tN" layoutX="11.0" layoutY="70.0" prefHeight="26.0" prefWidth="55.0" visible="false" />
+   </children>
+</AnchorPane>

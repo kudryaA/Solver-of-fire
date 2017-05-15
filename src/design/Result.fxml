@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="design.ResultController">
+   <children>
+      <TableView prefHeight="400.0" prefWidth="631.0">
+        <columns>
+          <TableColumn editable="false" prefWidth="158.0" sortable="false" text="Пожежна частина" />
+          <TableColumn editable="false" minWidth="0.0" prefWidth="176.0" sortable="false" text="Відстань до пожежи" />
+            <TableColumn editable="false" minWidth="0.0" prefWidth="323.0" sortable="false" text="Машина типу">
+               <columns>
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="I" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="99.0" sortable="false" text="II" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="97.0" sortable="false" text="III" />
+               </columns></TableColumn>
+            <TableColumn prefWidth="75.0" text="Column X" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="tP" editable="false" layoutY="52.0" prefHeight="348.0" prefWidth="159.0" />
+      <TextArea fx:id="tL" editable="false" layoutX="158.0" layoutY="52.0" prefHeight="348.0" prefWidth="177.0" />
+      <TextArea fx:id="tM1" editable="false" layoutX="334.0" layoutY="52.0" prefHeight="348.0" prefWidth="101.0" />
+      <TextArea fx:id="tM2" editable="false" layoutX="434.0" layoutY="52.0" prefHeight="348.0" prefWidth="101.0" />
+      <TextArea fx:id="tM3" editable="false" layoutX="533.0" layoutY="52.0" prefHeight="348.0" prefWidth="101.0" />
+   </children>
+</Pane>
