@@ -10,6 +10,7 @@ import core.*;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Row;
 
+import static core.Const.*;
 import static design.Metod.getPath;
 
 /**
@@ -37,7 +38,7 @@ public class ResultController implements Initializable {
         ArrayList lines = (ArrayList) Memory.lines.clone();
 
         Dijkstra di = new Dijkstra(firestations, lines);
-        Memory.fire.path = di.getPath();
+        Memory.fire.setPath(di.getPath());
         setNULL();
         firestations = (ArrayList) Memory.firestations.clone();
         Car car = new Car(Memory.fire, Memory.firestations);
@@ -46,13 +47,13 @@ public class ResultController implements Initializable {
 
         for (int i = 0; i < n - 1; i++) {
             FireStation buf = (FireStation) Memory.firestations.get(i);
-            String length = "" + Memory.fire.path[i];
-            if (Memory.fire.path[i] == Const.INF) {
-                length = "Дороги не існує";
+            String length = "" + Memory.fire.getPath()[i];
+            if (Memory.fire.getPath()[i] == INF) {
+                length = "Р”РѕСЂРѕРіРё РЅРµ С–СЃРЅСѓС”";
             }
-            add("" + buf.id, length, "" + buf.r1, "" + buf.r2, "" + buf.r3);
-            dataModels.add(new DataModel("" + buf.id, length, "" + buf.r1, "" + buf.r2, "" + buf.r3));
-            txt += "Пожежна частина: " + buf.id + "\tВідстань до пожежі: " + length + "\tМашина І типу: " + buf.r1 + "\tМашина ІI типу: " +  buf.r2 + "\tМашина ІII типу" +  buf.r3 + "\t\n";
+            add("" + buf.getId(), length, "" + buf.getR1(), "" + buf.getR2(), "" + buf.getR3());
+            dataModels.add(new DataModel("" + buf.getId(), length, "" + buf.getR1(), "" + buf.getR2(), "" + buf.getR3()));
+            txt += "РџРѕР¶РµР¶РЅР° С‡Р°СЃС‚РёРЅР°: " + buf.getId() + "\tР’С–РґСЃС‚Р°РЅСЊ РґРѕ РїРѕР¶РµР¶С–: " + length + "\tРњР°С€РёРЅР° Р† С‚РёРїСѓ: " + buf.getR1() + "\tРњР°С€РёРЅР° Р†I С‚РёРїСѓ: " +  buf.getR2() + "\tРњР°С€РёРЅР° Р†II С‚РёРїСѓ" +  buf.getR3() + "\t\n";
         }
 
     }
@@ -60,15 +61,15 @@ public class ResultController implements Initializable {
     @FXML
     private void toExcel() {
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Результат");
+        HSSFSheet sheet = workbook.createSheet("Р РµР·СѓР»СЊС‚Р°С‚");
         List<DataModel> dataList = dataModels;
         int rowNum = 0;
         Row row = sheet.createRow(rowNum);
-        row.createCell(0).setCellValue("Пожежна частина");
-        row.createCell(1).setCellValue("Відстань до пожежі");
-        row.createCell(2).setCellValue("Машина І типу");
-        row.createCell(3).setCellValue("Машина ІІ типу");
-        row.createCell(4).setCellValue("Машина ІІІ типу");
+        row.createCell(0).setCellValue("РџРѕР¶РµР¶РЅР° С‡Р°СЃС‚РёРЅР°");
+        row.createCell(1).setCellValue("Р’С–РґСЃС‚Р°РЅСЊ РґРѕ РїРѕР¶РµР¶С–");
+        row.createCell(2).setCellValue("РњР°С€РёРЅР° Р† С‚РёРїСѓ");
+        row.createCell(3).setCellValue("РњР°С€РёРЅР° Р†Р† С‚РёРїСѓ");
+        row.createCell(4).setCellValue("РњР°С€РёРЅР° Р†IР† С‚РёРїСѓ");
         for (DataModel dataModel : dataList) {
             createSheetHeader(sheet, ++rowNum, dataModel);
         }

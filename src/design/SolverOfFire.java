@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import core.Const;
+import static core.Const.*;
 
 /**
  *
@@ -20,8 +21,8 @@ public class SolverOfFire extends Application {
         
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle(Const.nameApplication);
-        stage.getIcons().add(new Image(Const.iconApplication));
+        stage.setTitle(NAME_APPLICATION);
+        stage.getIcons().add(new Image(ICON_APPLICATION));
         stage.setMaximized(true);
         stage.show();
     }

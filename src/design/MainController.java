@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import static core.Changer.*;
+import static core.Const.*;
 
 /**
  *
@@ -94,17 +95,17 @@ public class MainController implements Initializable {
         int m3 = Integer.parseInt(textIII.getText());
         switch (status) {
             case '0':
-                fire.m1 = m1;
-                fire.m2 = m2;
-                fire.m3 = m3;
+                fire.setM1(m1);
+                fire.setM2(m2);
+                fire.setM3(m3);
                 break;
             case '1':
                 FireStation frst = new FireStation();
                 FireStation buf = (FireStation) firestations.get(id);
-                frst.id = Integer.parseInt(tN.getText());
-                frst.m1 = m1;
-                frst.m2 = m2;
-                frst.m3 = m3;
+                frst.setId(Integer.parseInt(tN.getText()));
+                frst.setM1(m1);
+                frst.setM2(m2);
+                frst.setM3(m3);
                 firestations.set(id, frst);
                 break;
         }
@@ -115,26 +116,26 @@ public class MainController implements Initializable {
         double x = event.getX();
         double y = event.getY();
                 
-        if (fireB == true && fire.status == false) {
-            fire.status = true;
+        if (fireB == true && fire.getStatus() == false) {
+            fire.setStatus(true);
             fireB = false;
             field.setCursor(Cursor.CROSSHAIR);
             btnFire.setDisable(true);
                         
-            ImageView iv = newObjectV(x, y, Const.pathImageFireV);
+            ImageView iv = newObjectV(x, y, PATH_IMAGE_FIRE_V);
             iv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                 if (cancelB == true) {
                     field.getChildren().remove(iv);
                     fire = new Fire();
-                    fire.status = false;
+                    fire.setStatus(false);
                     btnFire.setDisable(false);
                 } else if (pathB == true) {
                     createLine(iv, 0);
                 } else {
-                    lInfo.setText(Const.nesCar);
-                    textI.setText("" + fire.m1);
-                    textII.setText("" + fire.m2);
-                    textIII.setText("" + fire.m3);
+                    lInfo.setText("Необхідні машини типу:");
+                    textI.setText("" + fire.getM1());
+                    textII.setText("" + fire.getM2());
+                    textIII.setText("" + fire.getM3());
                     status = '0';
                     visible1SettingV();
                     lN.setVisible(false);
@@ -147,27 +148,27 @@ public class MainController implements Initializable {
         if (firestationB == true) {
             FireStation st = new FireStation();
             int i = k;
-            st.id = k + 1;
+            st.setId(k + 1);
             firestationB = false;
             firestations.add(st);
             field.setCursor(Cursor.CROSSHAIR);
-            ImageView iv = newObjectV(x, y, Const.pathImageFireStationV);
+            ImageView iv = newObjectV(x, y, PATH_IMAGE_FIRESTATION_V);
             iv.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                 if (cancelB == true) {
                     field.getChildren().remove(iv);
                     firestations.set(i, null);
                 } else if (pathB == true) {
                     FireStation info = (FireStation) firestations.get(i);
-                    createLine(iv, info.id);
+                    createLine(iv, info.getId());
                 } else {
                     lN.setVisible(true);
                     tN.setVisible(true);
-                    lInfo.setText(Const.isCar);
+                    lInfo.setText("Наявні машини типу:");
                     FireStation info = (FireStation) firestations.get(i);
-                    textI.setText("" + info.m1);
-                    textII.setText("" + info.m2);
-                    textIII.setText("" + info.m3);
-                    tN.setText("" + info.id);
+                    textI.setText("" + info.getM1());
+                    textII.setText("" + info.getM2());
+                    textIII.setText("" + info.getM3());
+                    tN.setText("" + info.getId());
                     status = '1';
                     id = i;
                     visible1SettingV();
@@ -191,19 +192,19 @@ public class MainController implements Initializable {
             x2 = iv.getLayoutX();
             y2 = iv.getLayoutY();
             
-            Point[] t1 = getVariable(x1, y1, Const.radiusImage);
-            Point[] t2 = getVariable(x2, y2, Const.radiusImage);
+            Point[] t1 = getVariable(x1, y1, RADIUS_IMAGE);
+            Point[] t2 = getVariable(x2, y2, RADIUS_IMAGE);
             
             Rebro ph = new Rebro();
-            ph.v1 = Math.min(v, v1);
-            ph.v2 = Math.max(v, v1);
-            ph.length = getLength();
-            ph.id = kp + 1;
+            ph.setV1(Math.min(v, v1));
+            ph.setV2(Math.max(v, v1));
+            ph.setLength(getLength());
+            ph.setId(kp + 1);
             int i = kp;
             
             lines.add(ph);
             Point[] res = getResPoint(t1, t2);
-            Line line = new Line(res[0].x, res[0].y, res[1].x, res[1].y);
+            Line line = new Line(res[0].getX(), res[0].getY(), res[1].getX(), res[1].getY());
             line.setCursor(Cursor.HAND);
             line.setStrokeWidth(3);
             line.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
@@ -211,7 +212,7 @@ public class MainController implements Initializable {
                     field.getChildren().remove(line);
                     lines.set(i, null);
                 }  else {
-                    ph.length = getLength();
+                    ph.setLength(getLength());
                 }
             });
             field.getChildren().add(line);  
@@ -254,8 +255,8 @@ public class MainController implements Initializable {
     private ImageView newObjectV(double x, double y, String img) {
         ImageView iv = new ImageView();
         iv.setImage(new Image(img));
-        iv.setFitHeight(Const.radiusImage * 2);
-        iv.setFitWidth(Const.radiusImage * 2);
+        iv.setFitHeight(RADIUS_IMAGE * 2);
+        iv.setFitWidth(RADIUS_IMAGE* 2);
         iv.setPreserveRatio(true);
         iv.setLayoutX(x);
         iv.setLayoutY(y);

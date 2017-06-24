@@ -9,6 +9,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import core.Const;
+
+import static core.Const.ICON_APPLICATION;
+import static core.Const.NAME_APPLICATION;
+
 /**
  *
  * @author kam
@@ -22,8 +26,8 @@ public class Metod {
                 mainPane = FXMLLoader.load(SolverOfFire.class.getResource(str));
                 primaryStage.setScene(new Scene(mainPane));
                 primaryStage.setResizable(false);
-                primaryStage.getIcons().add(new Image(Const.iconApplication));
-                primaryStage.setTitle(Const.nameApplication);
+                primaryStage.setTitle(NAME_APPLICATION);
+                primaryStage.getIcons().add(new Image(ICON_APPLICATION));
                 primaryStage.setWidth(632);
                 primaryStage.setHeight(412);
                 primaryStage.show();

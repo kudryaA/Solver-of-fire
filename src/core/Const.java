@@ -6,13 +6,9 @@ package core;
  */
 public class Const {
     final public static double INF = Double.MAX_VALUE;
-    final public static String nameApplication = "Solver of fire";
-    final public static String pathImageFireStationV = "image/fireengineV.png";
-    final public static String pathImageFireV = "image/fireV.png";
-    final public static String isCar = "Наявні машини типу:";
-    final public static String nesCar = "Необхідні машини типу:";
-    final public static double radiusImage = 34;
-    final public static String iconApplication = "/image/icon.png";
-    final public static String strMessage = "Повідомлення";
-    final public static String errorFire = "Пожежу неможливо потушити";
+    final public static String NAME_APPLICATION = "Solver of fire";
+    final public static String PATH_IMAGE_FIRESTATION_V = "image/fireengineV.png";
+    final public static String PATH_IMAGE_FIRE_V = "image/fireV.png";
+    final public static double RADIUS_IMAGE = 34;
+    final public static String ICON_APPLICATION = "/image/icon.png";
 }

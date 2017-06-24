@@ -3,6 +3,8 @@ package core;
 import core.struct.Rebro;
 import java.util.*;
 
+import static core.Const.INF;
+
 /**
  *
  * @author kam
@@ -24,7 +26,7 @@ public class Dijkstra {
         pred = new int[n];
         Arrays.fill(pred, -1);
         dist = new double[n];
-        Arrays.fill(dist, Const.INF);   
+        Arrays.fill(dist, INF);
         dejkstra(0);
     }
     
@@ -32,7 +34,7 @@ public class Dijkstra {
         dist[s] = 0;
         for (int iter = 0; iter < n; iter++) {
             int v = -1;
-            double distV = Const.INF;
+            double distV = INF;
             for (int i = 0; i < n; i++) {
                 if (used[i]) {
                     continue;
@@ -64,8 +66,8 @@ public class Dijkstra {
         
         for (int i = 0; i < m; i++) {
             Rebro buf = (Rebro) mas.get(i);
-            int u = buf.v1;
-            int v = buf.v2;
+            int u = buf.getV1();
+            int v = buf.getV2();
             adj[u].add(v);
         }
 
@@ -81,7 +83,7 @@ public class Dijkstra {
 
         for (int i = 0; i < m; i++) {
             Rebro buf = (Rebro) mas.get(i);
-            weight[buf.v1].add(buf.length);
+            weight[buf.getV1()].add(buf.getLength());
         }
 
         return weight;
